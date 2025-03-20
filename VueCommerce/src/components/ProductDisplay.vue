@@ -7,6 +7,9 @@
 
         <div class="button-container">
             <button @click="$emit('add-to-cart', product)" class="add-to-cart">ADD TO CART</button>
+            <button @click="toggleWishlist" class="wishlist-button">
+                <i :class="['heart-icon', isInWishlist ? 'fas fa-heart' : 'far fa-heart']"></i>
+            </button>
         </div>
         <a href="#" @click.prevent="$emit('view-details', product)" class="view-details-link">
             View Details
@@ -95,6 +98,27 @@ export default {
 .view-details-link:hover {
     color: #0056b3;
     text-decoration: none;
-    /* Remove underline on hover */
+}
+
+/* Wishlist Heart Icon */
+.wishlist-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.wishlist-button .heart-icon {
+    transition: color 0.3s ease;
+}
+
+.wishlist-button:hover .heart-icon,
+.wishlist-button .fa-heart {
+    color: red;
+}
+
+.wishlist-button.selected .heart-icon {
+    color: red;
 }
 </style>
